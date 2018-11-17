@@ -23,19 +23,20 @@ import matplotlib.pyplot as plot
 
 
 # =============================================================================
-# Plot the path taken by greedy algorithm    
+# Plot the path taken by greedy algorithm
 # =============================================================================
 def framec( solution, nc ):
     saveme = 0
     cities = np.array( solution )
     plot.axis( [-100,1700,-100,1200] )
+    plot.axis("off")
     plot.plot(*zip(*cities))
     plot.title('{} Cities, Greedy Algorithm'.format(nc))
     plot.show()
-    plot.savefig( ("%05d" % saveme)+'.png')
+    #plot.savefig( ("%05d" % saveme)+'.png')
     plot.clf()
 
-    
+
 # =============================================================================
 # load file and parse it
 # =============================================================================
@@ -59,36 +60,33 @@ def loadFile(filename):
                 cities.append((float(x),float(y)))
         return cities
 
-    
+
 # =============================================================================
-#  Show all the cities    
+#  Show all the cities
 # =============================================================================
 def plot_tsp(cities):
     plot.scatter(*zip(*cities))
 
-    
+
 # =============================================================================
-#  Find Euclidean Distance 
+#  Find Euclidean Distance
 # =============================================================================
 def getDistance(currentCity, nextCity):
-    return math.sqrt(np.square(currentCity[0] - nextCity[0]) + np.square(currentCity[1]-nextCity[1]))  
+    return math.sqrt(np.square(currentCity[0] - nextCity[0]) + np.square(currentCity[1]-nextCity[1]))
 
-  
+
 # =============================================================================
-# Traveling Salesman using greedy approach     
+# Traveling Salesman using greedy approach
 # =============================================================================
 def greedy(cities):
     visited = []        # Initialize
     routeDistance = 0
-    
     mustVisit = cities  # Select a city randomly and set it as home city
     home = random.choice(cities)
-    
     visited.append(home)# Maintains the list of cities visited so far
     cities.remove(home)
     currentCity = home
     nearCity = currentCity
-    
     while currentCity:
         shortest = float('inf')  #set distance to infinity
         for someCity in mustVisit:
@@ -98,7 +96,7 @@ def greedy(cities):
                     nearCity = someCity
         if(shortest == float('inf')):
             break
-        mustVisit.remove(nearCity)        
+        mustVisit.remove(nearCity)
         visited.append(nearCity)
         currentCity = nearCity
         routeDistance = shortest + routeDistance
@@ -106,7 +104,7 @@ def greedy(cities):
     plot_tsp(visited)
     visited.append(home)
     return routeDistance, visited
-        
+
 def main():
     cities = loadFile('../data/randomTsp100.tsp')
     tsp_path, all = greedy(cities)
@@ -117,4 +115,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
