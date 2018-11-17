@@ -15,6 +15,16 @@ Created on Thu Nov 15, 11:55:17 2018
 import decimal
 import math
 import sys
+import decimal
+import math
+import sys
+from os import path
+import numpy as np
+import pandas as pd
+import time
+import math
+import random
+import matplotlib.pyplot as plot
 
 #loadData 
 def readFile(filename):
@@ -123,21 +133,39 @@ def twoOpt(cities):
                             swapCount+=1;
     
     print(f'Total 2-opt swaps: {swapCount}')
+    plot_tsp(cities)
     return cities
 
+# =============================================================================
+# Plot the path taken by 2-opt algorithm    
+# =============================================================================
+def framec( solution, nc ):
+    saveme = 1
+    cities = np.array( solution )
+    plot.axis( [-100,1700,-100,1200] )
+    plot.plot(*zip(*cities))
+    plot.title('{} Cities, 2-Opt Algorithm'.format(nc))
+    plot.show()
+    plot.savefig( ("%05d" % saveme)+'.png')
+    plot.clf()
 
+def plot_tsp(cities):
+    plot.scatter(*zip(*cities))
+    
 # In[6]:
 
 
 def main():
-    print("Solution to Travelling Salesman Problem by 2-opt technique")
-    content = readFile('../data/randomTsp100.tsp')
+    
+    print("Solution to Traveling Salesman Problem by 2-opt technique")
+    content = readFile(path.relpath('data/randomTsp100.tsp'))
     cities = parseFile(content)
     length = tourLength(cities)
     print(f'Initial length: {length}')
     result = twoOpt(cities)
     length = tourLength(result)
     print(f'Distance found by 2-opt method: {length}')
+    framec(result,100)
 
 
 if __name__ == '__main__':
