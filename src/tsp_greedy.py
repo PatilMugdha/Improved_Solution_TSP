@@ -80,15 +80,12 @@ def getDistance(currentCity, nextCity):
 def greedy(cities):
     visited = []        # Initialize
     routeDistance = 0
-    
     mustVisit = cities  # Select a city randomly and set it as home city
     home = random.choice(cities)
-    
     visited.append(home)# Maintains the list of cities visited so far
     cities.remove(home)
     currentCity = home
     nearCity = currentCity
-    
     while currentCity:
         shortest = float('inf')  #set distance to infinity
         for someCity in mustVisit:
