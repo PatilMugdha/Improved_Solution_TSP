@@ -112,7 +112,7 @@ def twoOpt(cities):
 
 def main():
     print("Solution to Travelling Salesman Problem by 2-opt technique")
-    content = readFile('randomTsp100.tsp')
+    content = readFile('../data/randomTsp100.tsp')
     cities = parseFile(content)
     length = tourLength(cities)
     print(f'Initial length: {length}')
