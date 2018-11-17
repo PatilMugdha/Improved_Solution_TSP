@@ -3,6 +3,18 @@
 
 # In[1]:
 
+"""
+Created on Thu Nov 15, 11:55:17 2018
+
+@author: PatilMugdha
+"""
+
+# =============================================================================
+#  load libraries
+# =============================================================================
+import decimal
+import math
+import sys
 
 #loadData 
 def readFile(filename):
@@ -12,12 +24,9 @@ def readFile(filename):
 
 
 # In[2]:
-
-
-import decimal
-import math
-import sys
-
+# =============================================================================
+# load file and parse it
+# =============================================================================
 def parseFile(content):
     lines = content.split('\n')
     #print(lines)
@@ -46,10 +55,16 @@ def parseFile(content):
 
 # In[3]:
 
-
+# =============================================================================
+#  Find Euclidean Distance 
+# =============================================================================
 def findDistance(prevCity, currentCity):
     return math.sqrt(sum([(a - b) ** 2 for a, b in zip(prevCity, currentCity)]))
 
+
+# =============================================================================
+# Find the tour length    
+# =============================================================================
 def tourLength(cities):
     prevCity = cities[len(cities) - 1];
     distance = 0
@@ -62,7 +77,9 @@ def tourLength(cities):
 
 # In[4]:
 
-
+# =============================================================================
+# Swap cross-edges     
+# =============================================================================
 def two_opt_swap(cities, i, j):
     newTour = []
     size = len(cities)
@@ -82,7 +99,9 @@ def two_opt_swap(cities, i, j):
 
 # In[5]:
 
-
+# =============================================================================
+# Travelling Salesman using 2-opt approach     
+# =============================================================================
 def twoOpt(cities):
     newTour = []
     bestDist = tourLength(cities)
