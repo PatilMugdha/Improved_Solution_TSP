@@ -148,7 +148,7 @@ def framec( solution, nc,title):
     cities = np.array(solution)
     plot.axis( [-100,1700,-100,1200] )
     plot.plot(*zip(*cities))
-    plot.title('{} Cities, {} Algorithm'.format(nc,title))
+    plot.title('{} Cities, {}'.format(nc,title))
     plot.show()
     plot.savefig((saveme)+'.png')
     plot.clf()
