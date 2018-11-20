@@ -100,7 +100,7 @@ def main():
     result = twoOpt(cities)
     length = tourLength(result)
     print(f'Distance found by 2-opt method: {length}')
-    plotGraph(result,100)
+    plotGraph(result,100,'2-opt technique')
 
 
 if __name__ == '__main__':
