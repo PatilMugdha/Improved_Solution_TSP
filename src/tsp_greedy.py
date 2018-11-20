@@ -57,7 +57,7 @@ def main():
     print('----Traveling Salesman Problem by Greedy Method----')
     print('Total distance travelled by Salesman')
     print(tsp_path)
-    plotGraph(all,100)
+    plotGraph(all,100,'Greedy Algorithm ')
 
 if __name__ == '__main__':
     main()

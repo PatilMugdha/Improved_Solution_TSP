@@ -1,5 +1,9 @@
 #This file contains the helper methods such as plot the graphs, parsing file and finding the distances.
+"""
+Created on Fri Nov 17 21:15:57 2018
 
+@author: aparnakale
+"""
 import numpy as np
 import math
 import matplotlib.pyplot as plot
@@ -8,14 +12,14 @@ import matplotlib.pyplot as plot
 # =============================================================================
 # Plot the path taken by greedy algorithm
 # =============================================================================
-def plotGraph( solution, nc ):
-    saveme = 0
-    cities = np.array( solution )
+def plotGraph( solution, nc,title):
+    saveme = title
+    cities = np.array(solution)
     plot.axis( [-100,1700,-100,1200] )
     plot.plot(*zip(*cities))
-    plot.title('{} Cities, Greedy Algorithm'.format(nc))
+    plot.title('{} Cities, {}'.format(nc,title))
     plot.show()
-    plot.savefig( ("%05d" % saveme)+'.png')
+    plot.savefig((saveme)+'.png')
     plot.clf()
 
 # =============================================================================
