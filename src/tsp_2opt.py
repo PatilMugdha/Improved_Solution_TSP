@@ -87,6 +87,7 @@ def twoOpt(cities):
                             swapCount+=1;
     
     print(f'Total 2-opt swaps: {swapCount}')
+    cities.append(cities[0])
     plot_tsp(cities)
     return cities
 
